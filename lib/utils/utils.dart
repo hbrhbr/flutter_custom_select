@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'flutter_custom_select_item.dart';
-
 Color borderColor = const Color(0xFF35343E).withOpacity(.10);
 Color labelColor = Colors.black.withOpacity(.44);
 Color errorColor = const Color(0xFFFF5858);
@@ -14,12 +12,11 @@ const String selectedList = "selection";
 TextStyle defaultTextStyle({
   double fontSize = 15,
   FontWeight fontWeight = FontWeight.w400,
-  String ?fontFamily,
+  String? fontFamily,
   TextDecoration decoration = TextDecoration.none,
   Color color = Colors.black,
   FontStyle fontStyle = FontStyle.normal,
-}){
-
+}) {
   return TextStyle(
     fontSize: fontSize,
     fontWeight: fontWeight,
@@ -29,11 +26,12 @@ TextStyle defaultTextStyle({
     fontStyle: fontStyle,
   );
 }
-Widget PostCheckBox({
+
+Widget postCheckBox({
   required String checkBoxText,
-  required void Function() ?onPressed,
+  required void Function()? onPressed,
   required bool value,
-}){
+}) {
   return MaterialButton(
     onPressed: onPressed,
     child: Row(
@@ -45,8 +43,8 @@ Widget PostCheckBox({
         ),
         Checkbox(
           value: value,
-          onChanged: (value){
-            if(onPressed!=null){
+          onChanged: (value) {
+            if (onPressed != null) {
               onPressed();
             }
           },
@@ -55,9 +53,12 @@ Widget PostCheckBox({
     ),
   );
 }
-InputBorder inputFieldBorder({Color ?color,}){
+
+InputBorder inputFieldBorder({
+  Color? color,
+}) {
   return OutlineInputBorder(
     borderRadius: BorderRadius.circular(borderRadius),
-    borderSide: BorderSide(width: 1, color: color??borderColor),
+    borderSide: BorderSide(width: 1, color: color ?? borderColor),
   );
 }
