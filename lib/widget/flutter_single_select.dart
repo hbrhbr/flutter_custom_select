@@ -56,7 +56,7 @@ class _CustomSingleSelectFieldState<T>
           buildContext: context,
           selectedItemColor: widget.selectedItemColor,
           initialSelection: selectedItem != null ? [selectedItem!] : [],
-          buttonType: CustomDropdownButtonType.SINGLE_SELECET,
+          buttonType: CustomDropdownButtonType.singleSelect,
           headerName: widget.title,
           dropdownItems: _getDropdownItems(list: widget.items),
         );

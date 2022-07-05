@@ -1,7 +1,7 @@
 enum CustomDropdownButtonType{
-  SINGLE_SELECET,
-  SINGLE_SELECET_WITH_SEARCH,
-  MULTI_SELECT,
-  MULTI_SELECT_WITH_SEARCH,
-  SEND,
+  singleSelect,
+  singleSelectWithSearch,
+  multiSelect,
+  multiSelectWithSearch,
+  send,
 }

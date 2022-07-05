@@ -63,7 +63,7 @@ class _CustomMultiSelectFieldState<T> extends State<CustomMultiSelectField<T>> {
               buildContext: context,
               selectedItemColor: widget.selectedItemColor,
               initialSelection: selectedItems,
-              buttonType: CustomDropdownButtonType.MULTI_SELECT,
+              buttonType: CustomDropdownButtonType.multiSelect,
               headerName: widget.title,
               dropdownItems: _customMultiSelectDropdownItem,
               isAllOptionEnable: widget.enableAllOptionSelect,

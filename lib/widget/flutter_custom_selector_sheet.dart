@@ -78,7 +78,7 @@ class CustomBottomSheetSelector<T> {
                             children: [
                               isAllOptionEnable &&
                                       buttonType ==
-                                          CustomDropdownButtonType.MULTI_SELECT
+                                          CustomDropdownButtonType.multiSelect
                                   ? CustomBottomSheetButton(
                                       trailing: Container(
                                         decoration: BoxDecoration(
@@ -124,7 +124,7 @@ class CustomBottomSheetSelector<T> {
                                   : const SizedBox(),
                               isAllOptionEnable &&
                                       buttonType ==
-                                          CustomDropdownButtonType.MULTI_SELECT
+                                          CustomDropdownButtonType.multiSelect
                                   ? Container(
                                       height: 0.5,
                                       width: double.infinity,
@@ -142,7 +142,7 @@ class CustomBottomSheetSelector<T> {
                                         CustomBottomSheetButton(
                                           trailing: buttonType ==
                                                   CustomDropdownButtonType
-                                                      .MULTI_SELECT
+                                                      .multiSelect
                                               ? Container(
                                                   decoration: BoxDecoration(
                                                     color: _item.selected
@@ -170,7 +170,7 @@ class CustomBottomSheetSelector<T> {
                                           onPressed: () {
                                             if (buttonType ==
                                                 CustomDropdownButtonType
-                                                    .MULTI_SELECT) {
+                                                    .multiSelect) {
                                               _item.selected = !_item.selected;
                                               if (_item.selected) {
                                                 _selectedList.add(
@@ -225,7 +225,7 @@ class CustomBottomSheetSelector<T> {
                   }),
                 ),
               ),
-              buttonType == CustomDropdownButtonType.MULTI_SELECT
+              buttonType == CustomDropdownButtonType.multiSelect
                   ? Container(
                       width: MediaQuery.of(bc).size.width - 40,
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
