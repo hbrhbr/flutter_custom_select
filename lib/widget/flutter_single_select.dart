@@ -6,15 +6,15 @@ import 'flutter_custom_selector_sheet.dart';
 
 class CustomSingleSelectField<T> extends StatefulWidget with CustomBottomSheetSelector<T>{
 
-  double ?width;
-  String title;
-  String Function(dynamic value) ?itemAsString;
-  InputDecoration ?decoration;
-  String? Function(String?)? validator;
+  final double ?width;
+  final String title;
+  final String Function(dynamic value) ?itemAsString;
+  final InputDecoration ?decoration;
+  final String? Function(String?)? validator;
   final void Function(dynamic value)? onSelectionDone;
-  T ?initialValue;
-  Color selectedItemColor;
-  List<T>items;
+  final T ?initialValue;
+  final Color selectedItemColor;
+  final List<T>items;
 
   CustomSingleSelectField({
     Key? key,
@@ -54,7 +54,7 @@ class _CustomSingleSelectFieldState<T> extends State<CustomSingleSelectField<T>>
           buildContext: context,
           selectedItemColor: widget.selectedItemColor,
           initialSelection: selectedItem!=null?[selectedItem!]:[],
-          buttonType: CustomDropdownButtonType.SINGLE_SELECET,
+          buttonType: CustomDropdownButtonType.singleSelect,
           headerName: widget.title,
           dropdownItems: _getDropdownItems(list: widget.items),
         );

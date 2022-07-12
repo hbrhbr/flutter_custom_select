@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../utils/enum.dart';
 import '../utils/flutter_custom_select_item.dart';
@@ -35,7 +34,6 @@ class CustomBottomSheetSelector<T>{
       isAllSelected = true;
     }
 
-    TextEditingController _controller = TextEditingController();
     await showModalBottomSheet(
         context: buildContext,
         backgroundColor: Colors.transparent,
@@ -77,7 +75,7 @@ class CustomBottomSheetSelector<T>{
                             shrinkWrap: true,
                             physics: const AlwaysScrollableScrollPhysics(),
                             children: [
-                              isAllOptionEnable&&buttonType==CustomDropdownButtonType.MULTI_SELECT
+                              isAllOptionEnable&&buttonType==CustomDropdownButtonType.multiSelect
                                   ? CustomBottomSheetButton(
                                 trailing : Container(
                                   decoration: BoxDecoration(
@@ -108,7 +106,7 @@ class CustomBottomSheetSelector<T>{
                                 buttonText: 'All',
                               )
                                   : const SizedBox(),
-                              isAllOptionEnable&&buttonType==CustomDropdownButtonType.MULTI_SELECT
+                              isAllOptionEnable&&buttonType==CustomDropdownButtonType.multiSelect
                                   ? Container(height: 0.5,width: double.infinity,color: Colors.grey,)
                                   : const SizedBox(),
 
@@ -118,7 +116,7 @@ class CustomBottomSheetSelector<T>{
                                     Column(
                                       children: [
                                         CustomBottomSheetButton(
-                                          trailing: buttonType==CustomDropdownButtonType.MULTI_SELECT
+                                          trailing: buttonType==CustomDropdownButtonType.multiSelect
                                               ? Container(
                                             decoration: BoxDecoration(
                                               color: _item.selected ? selectedItemColor:Colors.white,
@@ -135,7 +133,7 @@ class CustomBottomSheetSelector<T>{
                                           )
                                               : const SizedBox(),
                                           onPressed: (){
-                                            if(buttonType==CustomDropdownButtonType.MULTI_SELECT){
+                                            if(buttonType==CustomDropdownButtonType.multiSelect){
                                               _item.selected = !_item.selected;
                                               if(_item.selected){
                                                 _selectedList.add(_item.buttonObjectValue);
@@ -174,7 +172,7 @@ class CustomBottomSheetSelector<T>{
                   }),
                 ),
               ),
-              buttonType==CustomDropdownButtonType.MULTI_SELECT
+              buttonType==CustomDropdownButtonType.multiSelect
                   ? Container(
                 width: MediaQuery.of(bc).size.width-40,
                 margin: const EdgeInsets.only(top: 10,bottom: 10),

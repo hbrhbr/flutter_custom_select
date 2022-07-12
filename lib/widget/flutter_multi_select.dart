@@ -8,16 +8,16 @@ import 'flutter_custom_selector_sheet.dart';
 
 class CustomMultiSelectField<T> extends StatefulWidget with CustomBottomSheetSelector<T>{
 
-  double ?width;
-  String title;
-  InputDecoration ?decoration;
-  String Function(dynamic T) ?itemAsString;
+  final double ?width;
+  final String title;
+  final InputDecoration ?decoration;
+  final String Function(dynamic T) ?itemAsString;
   final String? Function(List<T>)? validator;
   final void Function(List<T>)? onSelectionDone;
-  List<T> ?initialValue;
-  Color selectedItemColor;
-  List<T>items;
-  bool enableAllOptionSelect;
+  final List<T> ?initialValue;
+  final Color selectedItemColor;
+  final List<T>items;
+  final bool enableAllOptionSelect;
 
   CustomMultiSelectField({
     Key? key,
@@ -66,7 +66,7 @@ class _CustomMultiSelectFieldState<T> extends State<CustomMultiSelectField<T>>{
               buildContext: context,
               selectedItemColor: widget.selectedItemColor,
               initialSelection: selectedItems,
-              buttonType: CustomDropdownButtonType.MULTI_SELECT,
+              buttonType: CustomDropdownButtonType.multiSelect,
               headerName: widget.title,
               dropdownItems: _customMultiSelectDropdownItem,
               isAllOptionEnable: widget.enableAllOptionSelect,
@@ -89,7 +89,7 @@ class _CustomMultiSelectFieldState<T> extends State<CustomMultiSelectField<T>>{
                 if(widget.validator!=null){
                   validationText = widget.validator!(selectedItems);
                 }
-                debugPrint("validationText:-> ${validationText}");
+                debugPrint("validationText:-> $validationText");
                 return validationText;
               },
               style: defaultTextStyle(fontSize: 16,),

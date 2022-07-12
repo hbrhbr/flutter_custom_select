@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'flutter_custom_select_item.dart';
-
 Color borderColor = const Color(0xFF35343E).withOpacity(.10);
 Color labelColor = Colors.black.withOpacity(.44);
 Color errorColor = const Color(0xFFFF5858);
@@ -29,7 +27,7 @@ TextStyle defaultTextStyle({
     fontStyle: fontStyle,
   );
 }
-Widget PostCheckBox({
+Widget postCheckBox({
   required String checkBoxText,
   required void Function() ?onPressed,
   required bool value,
