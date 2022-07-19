@@ -5,7 +5,7 @@
 
 FLutter Custom Selector is a package for creating single-select as well ass multi-select widgets with an awesome and unique user interface.
 
-| <img src="https://imgur.com/a/GsESdXd" width="250"/><br /><sub><b>Single Selection</b></sub> | <img src="https://imgur.com/a/FarTRkk" width="250"/><br /><sub><b>Multi Selection</b></sub>
+| <img src="https://djku7spo6dfd0.cloudfront.net/public/messageImages/image_1658199970YpK03nPdty6.gif" width="250"/><br /><sub><b>Single Selection</b></sub> | <img src="https://djku7spo6dfd0.cloudfront.net/public/messageImages/image_1658200005uuJ8hq27IvK.gif" width="250"/><br /><sub><b>Multi Selection</b></sub>
 | :---: | :---: |
 
 ## Features
@@ -18,7 +18,7 @@ FLutter Custom Selector is a package for creating single-select as well ass mult
 ## Usage
 
 ### CustomSingleSelectField
-<img src="https://imgur.com/a/GsESdXd" />
+<img src="https://djku7spo6dfd0.cloudfront.net/public/messageImages/image_1658199970YpK03nPdty6.gif" />
 
 This widget provide an GestureDetector which open the bottom sheet and are equipped with FormField features. You can customize it using the provided parameters.
 
@@ -38,7 +38,7 @@ CustomSingleSelectField<String>(
 ```
 
 ### CustomMultiSelectField
-<img src="https://imgur.com/a/FarTRkk"/>
+<img src="https://djku7spo6dfd0.cloudfront.net/public/messageImages/image_1658200005uuJ8hq27IvK.gif"/>
 
 This widget provide an GestureDetector which open the bottom sheet and are equipped with FormField features. You can customize it using the provided parameters.
 
