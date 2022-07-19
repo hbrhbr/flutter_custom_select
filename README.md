@@ -1,39 +1,59 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+# Multi Select Flutter
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+[![Pub Version](https://img.shields.io/badge/pub-v0.0.2-blue)](https://pub.dev/packages/flutter_custom_selector)
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+FLutter Custom Selector is a package for creating single-select as well ass multi-select widgets with an awesome and unique user interface.
+
+| <img src="https://imgur.com/a/GsESdXd" width="250"/><br /><sub><b>Single Selection</b></sub> | <img src="https://imgur.com/a/FarTRkk" width="250"/><br /><sub><b>Multi Selection</b></sub>
+| :---: | :---: |
 
 ## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+- Supports FormField features like validator.
+- Awesome default design.
+- BottomSheet widget.
+- Make your multi selection awesome.
+- All selection field is enabled in multi selection field.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+### CustomSingleSelectField
+<img src="https://imgur.com/a/GsESdXd" />
+
+This widget provide an GestureDetector which open the bottom sheet and are equipped with FormField features. You can customize it using the provided parameters.
+
+To store the selected values, you can use the `onSelectionDone` parameter.
+
 
 ```dart
-const like = 'sample';
+CustomSingleSelectField<String>(
+  items: dataString,
+  title: "Country",
+  onSelectionDone: (value){
+    selectedString = value;
+    setState(() {});
+  },
+  itemAsString: (item)=>item,
+),
 ```
 
-## Additional information
+### CustomMultiSelectField
+<img src="https://imgur.com/a/FarTRkk"/>
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+This widget provide an GestureDetector which open the bottom sheet and are equipped with FormField features. You can customize it using the provided parameters.
+
+To store the selected values, you can use the `onSelectionDone` parameter.
+
+```dart
+CustomMultiSelectField<String>(
+  title: "Country",
+  items: dataString, 
+  enableAllOptionSelect: true,
+  onSelectionDone: _onCountriesSelectionComplete,
+  itemAsString: (item) => item.toString(),
+),
+```
+
+## Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
