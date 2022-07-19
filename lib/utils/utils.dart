@@ -12,12 +12,11 @@ const String selectedList = "selection";
 TextStyle defaultTextStyle({
   double fontSize = 15,
   FontWeight fontWeight = FontWeight.w400,
-  String ?fontFamily,
+  String? fontFamily,
   TextDecoration decoration = TextDecoration.none,
   Color color = Colors.black,
   FontStyle fontStyle = FontStyle.normal,
-}){
-
+}) {
   return TextStyle(
     fontSize: fontSize,
     fontWeight: fontWeight,
@@ -27,11 +26,12 @@ TextStyle defaultTextStyle({
     fontStyle: fontStyle,
   );
 }
+
 Widget postCheckBox({
   required String checkBoxText,
-  required void Function() ?onPressed,
+  required void Function()? onPressed,
   required bool value,
-}){
+}) {
   return MaterialButton(
     onPressed: onPressed,
     child: Row(
@@ -43,8 +43,8 @@ Widget postCheckBox({
         ),
         Checkbox(
           value: value,
-          onChanged: (value){
-            if(onPressed!=null){
+          onChanged: (value) {
+            if (onPressed != null) {
               onPressed();
             }
           },
@@ -53,9 +53,12 @@ Widget postCheckBox({
     ),
   );
 }
-InputBorder inputFieldBorder({Color ?color,}){
+
+InputBorder inputFieldBorder({
+  Color? color,
+}) {
   return OutlineInputBorder(
     borderRadius: BorderRadius.circular(borderRadius),
-    borderSide: BorderSide(width: 1, color: color??borderColor),
+    borderSide: BorderSide(width: 1, color: color ?? borderColor),
   );
 }

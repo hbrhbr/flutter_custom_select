@@ -49,9 +49,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<String>dataString =  ["Pakistan","Saudi Arabia","UAE", "USA", "Turkey","Brazil", "Tunisia", 'Canada'];
-  String ?selectedString;
-  List<String> ?selectedDataString;
+  List<String> dataString = [
+    "Pakistan",
+    "Saudi Arabia",
+    "UAE",
+    "USA",
+    "Turkey",
+    "Brazil",
+    "Tunisia",
+    'Canada'
+  ];
+  String? selectedString;
+  List<String>? selectedDataString;
 
   @override
   Widget build(BuildContext context) {
@@ -70,13 +79,15 @@ class _MyHomePageState extends State<MyHomePage> {
             CustomSingleSelectField<String>(
               items: dataString,
               title: "Country",
-              onSelectionDone: (value){
+              onSelectionDone: (value) {
                 selectedString = value;
                 setState(() {});
               },
-              itemAsString: (item)=>item,
+              itemAsString: (item) => item,
             ),
-            const SizedBox(height: 20,),
+            const SizedBox(
+              height: 20,
+            ),
             CustomMultiSelectField<String>(
               title: "Country",
               items: dataString,
@@ -89,7 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-  void _onCountriesSelectionComplete(value){
+
+  void _onCountriesSelectionComplete(value) {
     selectedDataString?.addAll(value);
     setState(() {});
   }

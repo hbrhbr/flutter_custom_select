@@ -11,7 +11,6 @@ class CustomMultiSelectDropdownActions<T> {
     return selectedValues;
   }
 
-
   List<CustomMultiSelectDropdownItem<T>> updateSearchQuery(
       String? val, List<CustomMultiSelectDropdownItem<T>> allItems) {
     if (val != null && val.trim().isNotEmpty) {

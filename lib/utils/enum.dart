@@ -1,4 +1,4 @@
-enum CustomDropdownButtonType{
+enum CustomDropdownButtonType {
   singleSelect,
   singleSelectWithSearch,
   multiSelect,
