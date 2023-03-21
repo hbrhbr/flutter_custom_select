@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../utils/enum.dart';
 import '../utils/flutter_custom_select_item.dart';
 import '../utils/utils.dart';
@@ -6,15 +7,25 @@ import 'flutter_custom_selector_sheet.dart';
 
 class CustomSingleSelectField<T> extends StatefulWidget
     with CustomBottomSheetSelector<T> {
+  final bool? isBarrierDismissible;
   final double? width;
   final String title;
+  final String? cancelText;
   final String Function(dynamic value)? itemAsString;
   final InputDecoration? decoration;
   final String? Function(String?)? validator;
   final void Function(dynamic value)? onSelectionDone;
   final T? initialValue;
   final Color selectedItemColor;
+  final Color? cancelBackgroundColor;
+  final Color? separatorColor;
+  final double? separatorHeight;
+  final Color? itemBackgroundColor;
+  final Color? titleBackgroundColor;
+  final TextStyle? cancelTextStyle;
+  final TextStyle? itemTextStyle;
   final List<T> items;
+  final TextStyle? titleTextStyle;
 
   CustomSingleSelectField({
     Key? key,
@@ -27,6 +38,16 @@ class CustomSingleSelectField<T> extends StatefulWidget
     this.validator,
     this.initialValue,
     this.selectedItemColor = Colors.redAccent,
+    this.cancelText,
+    this.cancelBackgroundColor,
+    this.cancelTextStyle,
+    this.titleTextStyle,
+    this.itemBackgroundColor,
+    this.titleBackgroundColor,
+    this.separatorColor,
+    this.separatorHeight,
+    this.itemTextStyle,
+    this.isBarrierDismissible,
   }) : super(key: key);
 
   @override
@@ -57,6 +78,16 @@ class _CustomSingleSelectFieldState<T>
           initialSelection: selectedItem != null ? [selectedItem!] : [],
           buttonType: CustomDropdownButtonType.singleSelect,
           headerName: widget.title,
+          isBarrierDismissible: widget.isBarrierDismissible!,
+          headerNameTextStyle: widget.titleTextStyle,
+          cancelText: widget.cancelText!,
+          cancelBackgroundColor: widget.cancelBackgroundColor!,
+          separatorColor: widget.separatorColor!,
+          separatorHeight: widget.separatorHeight!,
+          cancelTextStyle: widget.cancelTextStyle!,
+          itemTextStyle: widget.itemTextStyle!,
+          dropdownItemBackgroundColor: widget.itemBackgroundColor!,
+          headerNameBackgroundColor: widget.titleBackgroundColor!,
           dropdownItems: _getDropdownItems(list: widget.items),
         );
 

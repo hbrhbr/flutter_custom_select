@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
+
 import '../utils/enum.dart';
 import '../utils/flutter_custom_select_item.dart';
 import '../utils/utils.dart';
 import 'flutter_custom_select_button.dart';
 
 class CustomBottomSheetSelector<T> {
-  Future<Map<String, List<T>?>> customBottomSheet({
-    required BuildContext buildContext,
-    required String headerName,
-    required CustomDropdownButtonType buttonType,
-    required List<CustomMultiSelectDropdownItem<T>> dropdownItems,
-    required List<T> initialSelection,
-    required Color selectedItemColor,
-    bool isAllOptionEnable = false,
-  }) async {
+  Future<Map<String, List<T>?>> customBottomSheet(
+      {required BuildContext buildContext,
+      required String headerName,
+      TextStyle? headerNameTextStyle,
+      Color? headerNameBackgroundColor,
+      required CustomDropdownButtonType buttonType,
+      required List<CustomMultiSelectDropdownItem<T>> dropdownItems,
+      required List<T> initialSelection,
+      required Color selectedItemColor,
+      bool isAllOptionEnable = false,
+      bool isBarrierDismissible = true,
+      String cancelText = "Cancel",
+      Color? separatorColor,
+      double separatorHeight = 1,
+      Color? cancelBackgroundColor,
+      Color? dropdownItemBackgroundColor,
+      TextStyle? cancelTextStyle,
+      TextStyle? itemTextStyle,
+      String doneText = "Done",
+      String allText = "All"}) async {
     List<T> _selectedList = <T>[];
     bool _selectionDone = false;
     bool isAllSelected = false;
@@ -35,6 +47,7 @@ class CustomBottomSheetSelector<T> {
     }
 
     await showModalBottomSheet(
+        isDismissible: isBarrierDismissible,
         context: buildContext,
         backgroundColor: Colors.transparent,
         enableDrag: true,
@@ -47,7 +60,7 @@ class CustomBottomSheetSelector<T> {
                   clipBehavior: Clip.antiAlias,
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   decoration: BoxDecoration(
-                    color: Colors.grey.shade200,
+                    color: dropdownItemBackgroundColor ?? Colors.grey.shade200,
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: StatefulBuilder(builder: (_, setState) {
@@ -57,17 +70,19 @@ class CustomBottomSheetSelector<T> {
                       children: [
                         Container(
                           padding: const EdgeInsets.symmetric(vertical: 10),
-                          color: Colors.grey.shade200,
+                          color:
+                              headerNameBackgroundColor ?? Colors.grey.shade200,
                           width: double.infinity,
                           alignment: Alignment.center,
                           child: Text(
                             headerName,
-                            style: const TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                              // decoration: TextDecoration.underline,
-                            ),
+                            style: headerNameTextStyle ??
+                                const TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black,
+                                  // decoration: TextDecoration.underline,
+                                ),
                           ),
                         ),
                         Flexible(
@@ -118,7 +133,7 @@ class CustomBottomSheetSelector<T> {
                                           color: isAllSelected
                                               ? selectedItemColor
                                               : Colors.black),
-                                      buttonText: 'All',
+                                      buttonText: allText,
                                     )
                                   : const SizedBox(),
                               isAllOptionEnable &&
@@ -138,6 +153,13 @@ class CustomBottomSheetSelector<T> {
                                           : dropdownItems)
                                     Column(
                                       children: [
+                                        Container(
+                                          height: _item == dropdownItems.first
+                                              ? separatorHeight
+                                              : (separatorHeight / 2),
+                                          width: double.infinity,
+                                          color: separatorColor ?? Colors.grey,
+                                        ),
                                         CustomBottomSheetButton(
                                           trailing: buttonType ==
                                                   CustomDropdownButtonType
@@ -194,19 +216,24 @@ class CustomBottomSheetSelector<T> {
                                               );
                                             }
                                           },
-                                          buttonTextStyle: defaultTextStyle(
-                                              color: _item.selected
-                                                  ? selectedItemColor
-                                                  : Colors.black),
+                                          buttonTextStyle:
+                                              itemTextStyle?.copyWith(
+                                                      color: _item.selected
+                                                          ? selectedItemColor
+                                                          : null) ??
+                                                  defaultTextStyle(
+                                                      color: _item.selected
+                                                          ? selectedItemColor
+                                                          : Colors.black),
                                           // buttonTextColor: Colors.black,
                                           buttonText: _item.buttonText,
                                         ),
                                         Container(
-                                          height: _item != dropdownItems.last
-                                              ? 0.5
-                                              : 0,
+                                          height: _item == dropdownItems.last
+                                              ? separatorHeight
+                                              : (separatorHeight / 2),
                                           width: double.infinity,
-                                          color: Colors.grey,
+                                          color: separatorColor ?? Colors.grey,
                                         ),
                                       ],
                                       mainAxisSize: MainAxisSize.min,
@@ -215,9 +242,6 @@ class CustomBottomSheetSelector<T> {
                               ),
                             ],
                           ),
-                        ),
-                        const SizedBox(
-                          height: 4,
                         ),
                       ],
                     );
@@ -245,10 +269,10 @@ class CustomBottomSheetSelector<T> {
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              "Done",
-                              style: TextStyle(
+                              doneText,
+                              style: const TextStyle(
                                 // color: pink,
                                 // fontFamily: fontsFamily.MontserratMedium,
                                 fontSize: 20,
@@ -269,21 +293,22 @@ class CustomBottomSheetSelector<T> {
                           _selectionDone = false;
                           Navigator.pop(buildContext);
                         },
-                        color: Colors.grey.shade200,
+                        color: cancelBackgroundColor ?? Colors.grey.shade200,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10.0)),
                         minWidth: MediaQuery.of(bc).size.width - 40,
                         child: Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10),
-                          child: const Center(
+                          child: Center(
                             child: Text(
-                              "Cancel",
-                              style: TextStyle(
-                                // color: pink,
-                                // fontFamily: fontsFamily.MontserratMedium,
-                                fontSize: 20,
-                              ),
+                              cancelText,
+                              style: cancelTextStyle ??
+                                  const TextStyle(
+                                    // color: pink,
+                                    // fontFamily: fontsFamily.MontserratMedium,
+                                    fontSize: 20,
+                                  ),
                             ),
                           ),
                         ),

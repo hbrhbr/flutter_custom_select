@@ -77,8 +77,29 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             CustomSingleSelectField<String>(
+              isBarrierDismissible: false,
               items: dataString,
-              title: "Country",
+              cancelText: "Fermer",
+              cancelBackgroundColor: Colors.green,
+              itemBackgroundColor: Colors.white,
+              titleBackgroundColor: Colors.orange,
+              separatorColor: Colors.blueGrey,
+              separatorHeight: 3,
+              cancelTextStyle: const TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+              itemTextStyle: const TextStyle(
+                color: Colors.deepPurple,
+                fontSize: 20,
+              ),
+              title: "Countries",
+              titleTextStyle: const TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                // decoration: TextDecoration.underline,
+              ),
               onSelectionDone: (value) {
                 selectedString = value;
                 setState(() {});
